@@ -1,4 +1,5 @@
 import {NS} from "Bitburner";
+import {Constants} from "/lib/Constants";
 
 const ReadText = {
     readLines(ns: NS, file: string): string[] {
@@ -20,6 +21,58 @@ const DownloadFiles = {
         if (!(await ns.wget(source, dest, "home"))) {
             logger.err(`\tFailed retrieving ${source} -> ${dest}`);
         }
+    },
+};
+
+const BasicSecurity = {
+    HomeLiteral: "home",
+    maxSecurityLevel(ns: NS): number {
+        return (
+            +ns.fileExists(
+                Constants.PurchaseableProgram.BruteSSH,
+                BasicSecurity.HomeLiteral
+            ) +
+            +ns.fileExists(
+                Constants.PurchaseableProgram.FTPCrack,
+                BasicSecurity.HomeLiteral
+            ) +
+            +ns.fileExists(
+                Constants.PurchaseableProgram.RelaySMTP,
+                BasicSecurity.HomeLiteral
+            ) +
+            +ns.fileExists(
+                Constants.PurchaseableProgram.HTTPWorm,
+                BasicSecurity.HomeLiteral
+            ) +
+            +ns.fileExists(
+                Constants.PurchaseableProgram.SQLInject,
+                BasicSecurity.HomeLiteral
+            )
+        );
+    },
+    break(ns: NS, target: string, level: number) {
+        if (level > 4) BasicSecurity.breakSQL(ns, target);
+        if (level > 3) BasicSecurity.breakHTTP(ns, target);
+        if (level > 2) BasicSecurity.breakSMTP(ns, target);
+        if (level > 1) BasicSecurity.breakFTP(ns, target);
+        if (level > 0) BasicSecurity.breakSSH(ns, target);
+
+        ns.nuke(target);
+    },
+    breakSSH(ns: NS, target: string) {
+        ns.brutessh(target);
+    },
+    breakFTP(ns: NS, target: string) {
+        ns.ftpcrack(target);
+    },
+    breakSMTP(ns: NS, target: string) {
+        ns.relaysmtp(target);
+    },
+    breakHTTP(ns: NS, target: string) {
+        ns.httpworm(target);
+    },
+    breakSQL(ns: NS, target: string) {
+        ns.sqlinject(target);
     },
 };
 
@@ -65,23 +118,9 @@ class RepoInit {
     ns: NS;
     logger: TermLogger;
 
-    constructor(ns: NS, logger: TermLogger = new TermLogger(ns)) {
+    constructor(ns: NS, logger: TermLogger) {
         this.ns = ns;
         this.logger = logger;
-    }
-
-    private static getSourceDestPair(line: string): { source: string; dest: string } | null {
-        return line.startsWith("./")
-            ? {
-                source: `${repoSettings.baseUrl}${line.substring(1)}`,
-                dest: line.substring(1),
-            }
-            : null;
-    }
-
-    async pullScripts() {
-        await this.getManifest();
-        await this.downloadAllFiles();
     }
 
     async getManifest() {
@@ -115,6 +154,15 @@ class RepoInit {
             }
         }
     }
+
+    private static getSourceDestPair(line: string): { source: string; dest: string } | null {
+        return line.startsWith("./")
+            ? {
+                source: `${repoSettings.baseUrl}${line.substring(1)}`,
+                dest: line.substring(1),
+            }
+            : null;
+    }
 }
 
-export {ReadText, TermLogger, RepoInit, DownloadFiles};
+export {ReadText, TermLogger, RepoInit, DownloadFiles, BasicSecurity};
