@@ -1,4 +1,0 @@
-interface Bot {
-    name: String
-}
-

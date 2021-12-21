@@ -1,9 +1,9 @@
 import {NS, Server} from "Bitburner";
 
 interface IHekkerHost {
-    ns: NS;
-    name: string;
-    hostData: Server;
+    readonly ns: NS;
+    readonly name: string;
+    readonly hostData: Server;
 }
 
 export {IHekkerHost};

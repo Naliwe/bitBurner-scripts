@@ -3,11 +3,11 @@ import {IHekkerHost} from "/lib/host/IHekkerHost";
 import {HekkerBot} from "/lib/bots/HekkerBot";
 
 class FarmerHost<TBot extends HekkerBot> implements IHekkerHost {
-    ns: NS;
-    name: string;
-    ram: number;
-    target: string;
-    bot: TBot;
+    readonly ns: NS;
+    readonly name: string;
+    readonly ram: number;
+    readonly target: string;
+    readonly bot: TBot;
 
     constructor(ns: NS, name: string, ram: number, target: string, c: new (ns: NS, host: string, target: string) => TBot) {
         this.ns = ns;

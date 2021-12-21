@@ -29,23 +29,23 @@ const BasicSecurity = {
     maxSecurityLevel(ns: NS): number {
         return (
             +ns.fileExists(
-                Constants.PurchaseableProgram.BruteSSH,
+                Constants.PurchasableProgram.BruteSSH,
                 BasicSecurity.HomeLiteral
             ) +
             +ns.fileExists(
-                Constants.PurchaseableProgram.FTPCrack,
+                Constants.PurchasableProgram.FTPCrack,
                 BasicSecurity.HomeLiteral
             ) +
             +ns.fileExists(
-                Constants.PurchaseableProgram.RelaySMTP,
+                Constants.PurchasableProgram.RelaySMTP,
                 BasicSecurity.HomeLiteral
             ) +
             +ns.fileExists(
-                Constants.PurchaseableProgram.HTTPWorm,
+                Constants.PurchasableProgram.HTTPWorm,
                 BasicSecurity.HomeLiteral
             ) +
             +ns.fileExists(
-                Constants.PurchaseableProgram.SQLInject,
+                Constants.PurchasableProgram.SQLInject,
                 BasicSecurity.HomeLiteral
             )
         );
@@ -77,11 +77,12 @@ const BasicSecurity = {
 };
 
 class TermLogger {
-    static INFO_LITERAL = "INFO   >";
-    static WARN_LITERAL = "WARN   >";
-    static ERR_LITERAL = "ERROR  >";
-    static TRACE_LITERAL = "TRACE  >";
-    ns: NS;
+    static readonly INFO_LITERAL = "INFO\t>";
+    static readonly WARN_LITERAL = "WARN\t>";
+    static readonly ERR_LITERAL = "ERROR\t>";
+    static readonly TRACE_LITERAL = "TRACE\t>";
+
+    readonly ns: NS;
 
     constructor(ns: NS) {
         this.ns = ns;
@@ -105,8 +106,8 @@ class TermLogger {
 }
 
 interface RepoSettings {
-    baseUrl: string;
-    manifestPath: string;
+    readonly baseUrl: string;
+    readonly manifestPath: string;
 }
 
 const repoSettings: RepoSettings = {
@@ -115,8 +116,8 @@ const repoSettings: RepoSettings = {
 };
 
 class RepoInit {
-    ns: NS;
-    logger: TermLogger;
+    readonly ns: NS;
+    readonly logger: TermLogger;
 
     constructor(ns: NS, logger: TermLogger) {
         this.ns = ns;

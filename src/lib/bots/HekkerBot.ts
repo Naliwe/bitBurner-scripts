@@ -2,20 +2,20 @@ import {NS} from "Bitburner";
 import {TermLogger} from "/lib/Helpers";
 
 interface HekkerBot {
-    ns: NS;
-    host: string;
-    target: string;
-    hekScript: string;
+    readonly ns: NS;
+    readonly host: string;
+    readonly target: string;
+    readonly hekScript: string;
 
     hekk(): Promise<boolean>;
 }
 
 class SimpleBot implements HekkerBot {
-    ns: NS;
-    host: string;
-    target: string;
-    hekScript: string;
-    logger: TermLogger;
+    readonly ns: NS;
+    readonly host: string;
+    readonly target: string;
+    readonly hekScript: string;
+    readonly logger: TermLogger;
 
     constructor(ns: NS, target: string, logger: TermLogger = new TermLogger(ns)) {
         this.ns = ns;

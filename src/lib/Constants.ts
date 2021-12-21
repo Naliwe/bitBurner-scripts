@@ -5,14 +5,19 @@ module Constants {
         "sigma-cosmetics",
         "joesguns",
         "hong-fang-tea",
-        "harakiri-sushi",
+        "harakiri-sushi"
     ];
-    export const level1Targets = ["neo-net", "zer0", "max-hardware", "iron-gym"];
+    export const level1Targets = [
+        "neo-net",
+        "zer0",
+        "max-hardware",
+        "iron-gym"
+    ];
     export const level2Targets = [
         "omega-net",
         "phantasy",
         "silver-helix",
-        "avmnite-02h",
+        "avmnite-02h"
     ];
     export const level3Targets = [
         "netlink",
@@ -20,7 +25,23 @@ module Constants {
         "catalyst",
         "summit-uni",
         "I.I.I.I",
+        "rho-construction"
     ];
+    export const valuableTargets = [
+        "joesguns",
+        "phantasy",
+        "the-hub",
+        "rho-construction",
+        "alpha-ent"
+    ];
+
+    export enum LogLevel {
+        TRACE = "TRACE\t>",
+        INFO = "INFO\t>",
+        WARN = "WARN\t>",
+        ERROR = "ERROR\t>"
+    }
+
     export type StockSymbol =
         | "ECP"
         | "MGCP"
@@ -55,8 +76,14 @@ module Constants {
         | "CTYS"
         | "MDYN"
         | "TITN";
-    export type OrderType = "limitbuy" | "limitsell" | "stopbuy" | "stopsell";
-    export type OrderPos = "long" | "short";
+    export type OrderType =
+        | "limitbuy"
+        | "limitsell"
+        | "stopbuy"
+        | "stopsell";
+    export type OrderPos =
+        | "long"
+        | "short";
     export type University =
         | "Summit University"
         | "Rothman University"
@@ -74,7 +101,11 @@ module Constants {
         | "Iron Gym"
         | "Powerhouse Gym"
         | "Millenium Fitness Gym";
-    export type GymStat = "str" | "def" | "dex" | "agi";
+    export type GymStat =
+        | "str"
+        | "def"
+        | "dex"
+        | "agi";
     export type City =
         | "Aevum"
         | "Chongqing"
@@ -83,18 +114,18 @@ module Constants {
         | "Ishima"
         | "Volhaven";
 
-    export enum PurchaseableProgram {
+    export enum PurchasableProgram {
         BruteSSH = "BruteSSH.exe",
         FTPCrack = "FTPCrack.exe",
         RelaySMTP = "relaySMTP.exe",
         HTTPWorm = "HTTPWorm.exe",
         SQLInject = "SQLInject.exe",
-        DeepscanV1 = "DeepScanV1.exe",
-        DeepscanV2 = "DeepScanV2.exe",
+        DeepScanV1 = "DeepScanV1.exe",
+        DeepScanV2 = "DeepScanV2.exe",
         AutoLink = "AutoLink.exe",
     }
 
-    export type CreatableProgram = PurchaseableProgram | "serverprofiler.exe";
+    export type CreatableProgram = PurchasableProgram | "serverprofiler.exe";
     export type CompanyName =
     // Sector-12
         | "MegaCorp"
@@ -201,7 +232,10 @@ module Constants {
         | "Speakers for the Dead"
         | "NiteSec"
         | "The Black Hand";
-    export type FactionWork = "hacking" | "field" | "security";
+    export type FactionWork =
+        | "hacking"
+        | "field"
+        | "security";
     export type Crime =
         | "shoplift"
         | "rob store"
