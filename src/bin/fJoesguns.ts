@@ -6,6 +6,7 @@ const farmers = Constants.level1Targets.concat(Constants.level2Targets).concat(C
 
 const target = "joesguns";
 
+/** @param {NS} ns **/
 export async function main(ns: NS) {
     const bots = farmers.map(
         (farmer) => new SecurityAwareBot(ns, farmer, target)

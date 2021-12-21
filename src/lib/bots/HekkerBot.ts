@@ -27,7 +27,7 @@ class SimpleBot implements HekkerBot {
 
     async hekk(): Promise<boolean> {
         this.logger.info(
-            `Starting hekks from script ${this.hekScript} on ${this.target}`
+            `Starting heks from script ${this.hekScript} on ${this.target}`
         );
 
         this.logger.info(`\tTrying to nuke ${this.target} ...`);

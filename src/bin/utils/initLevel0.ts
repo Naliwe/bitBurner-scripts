@@ -10,10 +10,9 @@ const level0Targets = [
     "harakiri-sushi",
 ];
 
+/** @param {NS} ns **/
 export async function main(ns: NS) {
-    for (let target of level0Targets) {
-        const bot = new SimpleBot(ns, target);
-
+    for (let bot of level0Targets.map(t => new SimpleBot(ns, t))) {
         if (await bot.hekk()) {
             ns.tprintf(`INFO   > Bot launch success \\o/`);
         } else {
