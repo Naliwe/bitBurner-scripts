@@ -35,7 +35,10 @@ module Constants {
         "univ-energy",
         "unitalife",
         "deltaone",
-        "zeus-med"
+        "zeus-med",
+        "icarus",
+        "4sigma",
+        "megacorp"
     ];
 
     export enum LogLevel {

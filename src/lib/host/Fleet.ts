@@ -23,12 +23,6 @@ class DefaultFleet implements IFleet {
 
     isRunning: boolean = false;
 
-    private readonly serviceScript = `export async function main(ns) {
-      while (true) {
-        ns.tprint("Pouet");
-      }
-    }`;
-
     constructor(ns: NS, name: string, nbHosts: number, target: string, logger: ILog = new TestLogger(ns)) {
         this.ns = ns;
         this.name = name;

@@ -7,7 +7,7 @@ export async function main(ns: NS) {
 
     logger.info(`Deploying fleet to attack rho-construction`);
 
-    if (!ns.exec("/bin/deployFleet.ns", "home", 1, "First", "rho-construction", 5)) {
+    if (!ns.exec("/bin/deployFleet.ns", "home", 1, "Rho", "rho-construction", 5)) {
         logger.info(`+++ Fleet launch success!`);
     } else {
         logger.err(`!!! Failed launching fleet!`);
