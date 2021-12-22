@@ -1,5 +1,6 @@
 import {NS} from "Bitburner";
 
+/** @param {NS} ns **/
 export async function main(ns: NS) {
     const target = ns.args[0] as string;
     const moneyThresh = ns.getServerMaxMoney(target) * 0.75;

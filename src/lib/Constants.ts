@@ -28,12 +28,14 @@ module Constants {
         "rho-construction"
     ];
     export const valuableTargets = [
-        "joesguns",
         "phantasy",
         "the-hub",
         "rho-construction",
         "alpha-ent",
-        "univ-energy"
+        "univ-energy",
+        "unitalife",
+        "deltaone",
+        "zeus-med"
     ];
 
     export enum LogLevel {

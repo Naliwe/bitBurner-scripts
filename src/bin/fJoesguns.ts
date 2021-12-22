@@ -2,7 +2,9 @@ import {NS} from "Bitburner";
 import {SecurityAwareBot} from "/lib/bots/SecurityAwareBot";
 import {Constants} from "/lib/Constants";
 
-const farmers = Constants.level1Targets.concat(Constants.level2Targets).concat(Constants.level3Targets);
+const farmers = Constants.level1Targets
+    .concat(Constants.level2Targets)
+    .concat(Constants.level3Targets);
 
 const target = "joesguns";
 
@@ -13,11 +15,11 @@ export async function main(ns: NS) {
     );
 
     for (let bot of bots) {
-        ns.tprintf(`INFO   > Launching ${bot.toString()}`);
+        ns.tprintf(`INFO\t> Launching ${bot.toString()}`);
         if (await bot.hekk()) {
-            ns.tprintf(`INFO   > Bot launch success \\o/`);
+            ns.tprintf(`INFO\t> Bot launch success \\o/`);
         } else {
-            ns.tprintf(`ERROR  > Bot launch failure :(`);
+            ns.tprintf(`ERROR\t> Bot launch failure :(`);
         }
     }
 }

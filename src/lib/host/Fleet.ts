@@ -4,6 +4,7 @@ import {ILog, TestLogger} from "/lib/logger/ILog";
 import {FarmerHost} from "/lib/host/FarmerHost";
 import {SecurityAwareBot} from "/lib/bots/SecurityAwareBot";
 import {Constants} from "/lib/Constants";
+import {IService} from "/lib/services/IService";
 
 interface IFleet extends IService {
     readonly ns: NS;
@@ -18,6 +19,7 @@ class DefaultFleet implements IFleet {
     readonly targets: string[];
     readonly logger: ILog;
     readonly pid: number = 0;
+    readonly portNumber: number = 10;
 
     isRunning: boolean = false;
 

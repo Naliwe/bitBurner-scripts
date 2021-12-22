@@ -2,6 +2,7 @@ interface IService {
     readonly name: string;
     readonly pid: number;
     readonly isRunning: boolean;
+    readonly portNumber: number;
 
     start(): Promise<boolean>;
 
@@ -11,3 +12,5 @@ interface IService {
 
     status(): Promise<boolean>;
 }
+
+export {IService};
