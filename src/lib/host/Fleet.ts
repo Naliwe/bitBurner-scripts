@@ -3,6 +3,7 @@ import {IHekkerHost} from "/lib/host/IHekkerHost";
 import {ILog, TestLogger} from "/lib/logger/ILog";
 import {FarmerHost} from "/lib/host/FarmerHost";
 import {SecurityAwareBot} from "/lib/bots/SecurityAwareBot";
+import {Constants} from "/lib/Constants";
 
 interface IFleet extends IService {
     readonly ns: NS;
@@ -20,6 +21,12 @@ class DefaultFleet implements IFleet {
 
     isRunning: boolean = false;
 
+    private readonly serviceScript = `export async function main(ns) {
+      while (true) {
+        ns.tprint("Pouet");
+      }
+    }`;
+
     constructor(ns: NS, name: string, nbHosts: number, target: string, logger: ILog = new TestLogger(ns)) {
         this.ns = ns;
         this.name = name;
@@ -28,7 +35,13 @@ class DefaultFleet implements IFleet {
         this.logger = logger;
 
         for (let i = 0; i < nbHosts; ++i) {
-            this.hosts.push(new FarmerHost(ns, `DF-${name}-${i}`, 512, target, SecurityAwareBot))
+            this.hosts.push(new FarmerHost(
+                ns,
+                `DF-${name}-${i}`,
+                Constants.ServerSize.G512,
+                target,
+                SecurityAwareBot
+            ))
         }
     }
 
@@ -49,19 +62,40 @@ class DefaultFleet implements IFleet {
             ++success;
         }
 
+        this.logger.info(`Service ${this.name} started`);
+
+        this.isRunning = true;
+
         return success == this.hosts.length;
     }
 
-    restart(): Promise<boolean> {
-        return Promise.resolve(false);
+    async restart(): Promise<boolean> {
+        return (
+            await this.stop() &&
+            await this.start()
+        );
     }
 
-    status(): Promise<boolean> {
-        return Promise.resolve(false);
+    async status(): Promise<boolean> {
+        return true;
     }
 
-    stop(): Promise<boolean> {
-        return Promise.resolve(false);
+    async stop(): Promise<boolean> {
+        this.logger.info(`Stopping service ${this.name} ...`);
+
+        for (let host of this.hosts) {
+            if (this.ns.killall(host.name)) {
+                this.logger.info(`\t> Killed all on ${host.name}`);
+            } else {
+                this.logger.warn(`\t> Nothing running on ${host.name}`);
+            }
+        }
+
+        this.logger.info(`+++ Service ${this.name} stopped`);
+
+        this.isRunning = false;
+
+        return true;
     }
 }
 

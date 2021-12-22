@@ -19,7 +19,7 @@ class SimpleBot implements HekkerBot {
 
     constructor(ns: NS, target: string, logger: TermLogger = new TermLogger(ns)) {
         this.ns = ns;
-        this.hekScript = "/heks/hek_target.ns";
+        this.hekScript = "/heks/hgw_target.ns";
         this.host = target;
         this.target = target;
         this.logger = logger;

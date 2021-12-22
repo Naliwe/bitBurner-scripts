@@ -11,7 +11,7 @@ class SecurityAwareBot implements HekkerBot {
 
     constructor(ns: NS, host: string, target: string) {
         this.ns = ns;
-        this.hekScript = "/heks/hek_target.ns";
+        this.hekScript = "/heks/hgw_target.ns";
         this.host = host;
         this.target = target;
         this.logger = new TermLogger(ns);

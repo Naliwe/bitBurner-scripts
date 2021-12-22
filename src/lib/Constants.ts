@@ -32,7 +32,8 @@ module Constants {
         "phantasy",
         "the-hub",
         "rho-construction",
-        "alpha-ent"
+        "alpha-ent",
+        "univ-energy"
     ];
 
     export enum LogLevel {
@@ -40,6 +41,30 @@ module Constants {
         INFO = "INFO\t>",
         WARN = "WARN\t>",
         ERROR = "ERROR\t>"
+    }
+
+    export enum ServerSize {
+        G1 = 1,
+        G2 = 1 << 1,
+        G4 = 1 << 2,
+        G8 = 1 << 3,
+        G16 = 1 << 4,
+        G32 = 1 << 5,
+        G64 = 1 << 6,
+        G128 = 1 << 7,
+        G256 = 1 << 8,
+        G512 = 1 << 9,
+        T1 = 1 << 10,
+        T2 = 1 << 11,
+        T4 = 1 << 12,
+        T8 = 1 << 13,
+        T16 = 1 << 14,
+        T32 = 1 << 15,
+        T64 = 1 << 16,
+        T128 = 1 << 17,
+        T256 = 1 << 18,
+        T512 = 1 << 19,
+        P1 = 1 << 20
     }
 
     export type StockSymbol =
