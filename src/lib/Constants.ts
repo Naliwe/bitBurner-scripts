@@ -37,8 +37,14 @@ module Constants {
         "deltaone",
         "zeus-med",
         "icarus",
+        "stormtech",
         "4sigma",
-        "megacorp"
+        "kuai-gong",
+        "megacorp",
+        "nwo",
+        "blade",
+        ".",
+        "fulcrumtech",
     ];
 
     export enum LogLevel {

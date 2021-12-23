@@ -81,7 +81,7 @@ class SimpleBot implements HekkerBot {
         if (this.ns.killall(this.host)) {
             this.logger.info(`\tKilled all on ${this.host}`);
         } else {
-            this.logger.err(`\tNothing running on ${this.host}`);
+            this.logger.warn(`\tNothing running on ${this.host}`);
         }
 
         if (this.ns.exec(this.hekScript, this.host, nbThreads, this.target) == 0) {

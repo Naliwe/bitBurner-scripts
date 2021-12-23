@@ -124,6 +124,15 @@ class RepoInit {
         this.logger = logger;
     }
 
+    private static getSourceDestPair(line: string): { source: string; dest: string } | null {
+        return line.startsWith("./")
+            ? {
+                source: `${repoSettings.baseUrl}${line.substring(1)}`,
+                dest: line.substring(1),
+            }
+            : null;
+    }
+
     async getManifest() {
         const manifestUrl = `${repoSettings.baseUrl}${repoSettings.manifestPath}`;
 
@@ -154,15 +163,6 @@ class RepoInit {
                 await DownloadFiles.getfileToHome(this.ns, pair.source, pair.dest);
             }
         }
-    }
-
-    private static getSourceDestPair(line: string): { source: string; dest: string } | null {
-        return line.startsWith("./")
-            ? {
-                source: `${repoSettings.baseUrl}${line.substring(1)}`,
-                dest: line.substring(1),
-            }
-            : null;
     }
 }
 
