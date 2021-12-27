@@ -6,6 +6,10 @@ const params = {
         sourceFile: "resources/manifest.txt",
         destFile: "/resources/manifest.txt",
     },
+    constants: {
+        sourceFile: "lib/Constants.ns",
+        destFile: "/lib/Constants.ns",
+    },
     helpers: {
         sourceFile: "lib/Helpers.ns",
         destFile: "/lib/Helpers.ns",
