@@ -37,7 +37,7 @@ async function pullFile(
 
 /** @param {NS} ns **/
 export async function main(ns: NS) {
-    const files = [params.helpers, params.manifest, params.pullFiles];
+    const files = [params.helpers, params.manifest, params.pullFiles, params.constants];
 
     for (let file of files) {
         await pullFile(ns, file);
